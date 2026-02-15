@@ -112,7 +112,7 @@ export default function Home({ portfolioItems }: HomeProps) {
             {/* Gallery */}
             <div className="flex-1">
               {/* Results count */}
-              <div className="mb-4 text-sm text-gray-600">
+              <div className="mb-4 text-sm text-gray-600 dark:text-gray-400">
                 Showing {filteredItems.length} of {portfolioItems.length}{' '}
                 {filteredItems.length === 1 ? 'artwork' : 'artworks'}
               </div>

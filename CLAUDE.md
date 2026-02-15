@@ -20,12 +20,14 @@ A personal digital portfolio web application for showcasing drawings and picture
 - ✅ **Image Lightbox:** Full-screen image viewer with navigation
 - ✅ **Search Functionality:** Real-time search across titles, descriptions, and tags
 - ✅ **Filter System:** Filter artwork by categories and tags
+- ✅ **Dark Mode:** Toggle between light and dark themes with persistent preference
 
 ### User Experience
 - Responsive design (mobile-first approach)
 - Fast loading with image optimization
 - Intuitive navigation
 - Clean, modern interface
+- Dark mode support for reduced eye strain
 
 ## Technical Stack Decisions
 
@@ -116,6 +118,128 @@ A personal digital portfolio web application for showcasing drawings and picture
 - **fuse.js** - Client-side fuzzy search
 - React state for filter management
 
+## Dark Mode Implementation
+
+### Overview
+The portfolio includes a complete dark mode implementation with toggle functionality, persistent user preferences, and system color scheme detection.
+
+**Status:** ✅ Fully implemented and production-ready
+
+### Technical Architecture
+
+**Theme Management:**
+- **React Context API** (`src/contexts/ThemeContext.tsx`) - Global theme state management
+- **localStorage** - Persists user's theme preference across sessions
+- **System Preferences** - Detects and respects `prefers-color-scheme` on first visit
+- **Tailwind CSS** - Class-based dark mode with `dark:` utility variants
+
+**Key Components:**
+- `ThemeContext.tsx` - Context provider and custom `useTheme` hook
+- `ThemeToggle.tsx` - Toggle button with sun/moon icons
+- All UI components updated with `dark:` variants
+
+### How It Works
+
+1. **Theme Provider** wraps the entire app in `_app.tsx`
+2. **ThemeContext** manages theme state ('light' | 'dark')
+3. **Theme Toggle** button dynamically imported (SSR disabled)
+4. When theme changes:
+   - Updates HTML element class (`<html class="dark">`)
+   - Saves preference to localStorage
+   - All components with `dark:` classes update automatically
+
+### Color Scheme
+
+**Light Mode (Default):**
+- Background: White / Gray 50
+- Text: Gray 900 / Gray 600
+- Accents: Blue 100 / Blue 800
+
+**Dark Mode:**
+- Background: Slate 900 (#0F172A) / Gray 800
+- Text: White / Gray 300
+- Accents: Blue 900 / Blue 200
+
+### Usage for Developers
+
+**Accessing Theme State:**
+```typescript
+import { useTheme } from '@/contexts/ThemeContext'
+
+function MyComponent() {
+  const { theme, toggleTheme } = useTheme()
+  // theme is 'light' or 'dark'
+  // toggleTheme() switches between modes
+}
+```
+
+**Adding Dark Mode to Components:**
+```tsx
+// Always pair light and dark variants together
+<div className="bg-white dark:bg-gray-800 text-gray-900 dark:text-white">
+  Content
+</div>
+```
+
+**Common Color Patterns:**
+- `bg-white` → `dark:bg-gray-800`
+- `bg-gray-100` → `dark:bg-gray-700`
+- `text-gray-900` → `dark:text-white`
+- `text-gray-600` → `dark:text-gray-300`
+- `border-gray-300` → `dark:border-gray-600`
+
+### Important Technical Notes
+
+**SSR Consideration:**
+The `ThemeToggle` component is imported with Next.js dynamic import and `ssr: false` to prevent server-side rendering errors. This is required because:
+- React Context isn't available during SSR
+- `localStorage` and `window.matchMedia` are browser-only APIs
+- Without this, you'll get "useTheme must be used within a ThemeProvider" errors
+
+**Example (Layout.tsx):**
+```typescript
+const ThemeToggle = dynamic(() => import('./ThemeToggle'), {
+  ssr: false,
+  loading: () => <div className="p-2 w-9 h-9" aria-hidden="true" />
+})
+```
+
+### Configuration Files
+
+**Tailwind Config** (`tailwind.config.js`):
+```javascript
+module.exports = {
+  darkMode: 'class', // Enable class-based dark mode
+  // ... rest of config
+}
+```
+
+**Global CSS** (`src/styles/globals.css`):
+```css
+/* Dark mode colors */
+.dark {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 15, 23, 42;
+  --background-end-rgb: 15, 23, 42;
+}
+```
+
+### Adding Dark Mode to New Components
+
+When creating new components:
+1. Import and use existing dark mode classes from other components as reference
+2. Follow the pattern: `className="light-class dark:dark-class"`
+3. Test in both light and dark modes
+4. Ensure sufficient color contrast for accessibility
+
+### User Features
+
+- **Toggle Button:** Sun/moon icon in header (upper right)
+- **Persistent:** Preference saved in browser localStorage
+- **Smart Default:** Respects system color scheme on first visit
+- **Smooth Transitions:** All color changes animate smoothly
+- **Keyboard Accessible:** Fully navigable with keyboard
+
 ## Project Structure
 
 ```
@@ -129,15 +253,18 @@ DigitalPortfolio/
 │   │   ├── SearchBar.tsx    # Search input
 │   │   ├── FilterPanel.tsx  # Category/tag filters
 │   │   ├── PortfolioCard.tsx # Individual artwork card
+│   │   ├── ThemeToggle.tsx  # Dark mode toggle button
 │   │   └── Layout.tsx       # Page wrapper
+│   ├── contexts/
+│   │   └── ThemeContext.tsx # Theme state management
 │   ├── data/
 │   │   └── portfolio.json   # Portfolio metadata
 │   ├── pages/
-│   │   ├── _app.tsx         # App wrapper
+│   │   ├── _app.tsx         # App wrapper + ThemeProvider
 │   │   ├── _document.tsx    # HTML document
 │   │   └── index.tsx        # Homepage
 │   ├── styles/
-│   │   └── globals.css      # Global styles + Tailwind
+│   │   └── globals.css      # Global styles + Tailwind + dark mode
 │   ├── types/
 │   │   └── portfolio.ts     # TypeScript interfaces
 │   └── utils/
@@ -146,7 +273,7 @@ DigitalPortfolio/
 ├── .gitignore
 ├── package.json
 ├── tsconfig.json
-├── tailwind.config.js
+├── tailwind.config.js       # Dark mode config
 ├── next.config.js
 └── README.md
 ```
@@ -224,10 +351,11 @@ Documented for potential future development:
 - Pagination for large portfolios
 - Sorting options (by date, title, category)
 - Analytics integration
-- Dark mode toggle
 - Contact form or social links
 - Individual detail pages for each artwork
 - Blog/about section
+- Keyboard shortcuts for dark mode (e.g., Ctrl+Shift+D)
+- Theme sync across browser tabs
 
 ## Technical Notes
 
@@ -274,3 +402,6 @@ Documented for potential future development:
 **Last Updated:** 2026-02-15
 **Project Status:** In Development
 **Target Deployment:** Vercel
+
+**Recent Updates:**
+- ✅ Dark mode implementation complete (2026-02-15)

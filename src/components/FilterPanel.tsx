@@ -33,7 +33,7 @@ export default function FilterPanel({
       {hasActiveFilters && (
         <button
           onClick={onClearFilters}
-          className="w-full py-2 px-4 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg text-sm font-medium transition-colors"
+          className="w-full py-2 px-4 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-200 rounded-lg text-sm font-medium transition-colors"
         >
           Clear All Filters
         </button>
@@ -41,7 +41,7 @@ export default function FilterPanel({
 
       {/* Categories Section */}
       <div>
-        <h3 className="text-sm font-semibold text-gray-900 mb-3">
+        <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-3">
           Categories
         </h3>
         <div className="space-y-2">
@@ -54,8 +54,8 @@ export default function FilterPanel({
                 className={clsx(
                   'w-full text-left px-3 py-2 rounded-md text-sm transition-all',
                   isSelected
-                    ? 'bg-blue-100 text-blue-900 font-medium'
-                    : 'bg-gray-50 text-gray-700 hover:bg-gray-100'
+                    ? 'bg-blue-100 dark:bg-blue-900 text-blue-900 dark:text-blue-200 font-medium'
+                    : 'bg-gray-50 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
                 )}
               >
                 {category}
@@ -67,7 +67,7 @@ export default function FilterPanel({
 
       {/* Tags Section */}
       <div>
-        <h3 className="text-sm font-semibold text-gray-900 mb-3">Tags</h3>
+        <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-3">Tags</h3>
         <div className="flex flex-wrap gap-2">
           {displayedTags.map((tag) => {
             const isSelected = selectedTags.includes(tag)
@@ -78,8 +78,8 @@ export default function FilterPanel({
                 className={clsx(
                   'px-3 py-1.5 rounded-full text-xs font-medium transition-all',
                   isSelected
-                    ? 'bg-blue-500 text-white'
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                    ? 'bg-blue-500 dark:bg-blue-600 text-white'
+                    : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
                 )}
               >
                 {tag}
@@ -92,7 +92,7 @@ export default function FilterPanel({
         {tags.length > 8 && (
           <button
             onClick={() => setShowAllTags(!showAllTags)}
-            className="mt-3 text-sm text-blue-600 hover:text-blue-800 font-medium"
+            className="mt-3 text-sm text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 font-medium"
           >
             {showAllTags ? 'Show Less' : `Show All (${tags.length})`}
           </button>
