@@ -2,10 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Light mode colors (default) */
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 255, 255, 255;
   --background-end-rgb: 255, 255, 255;
+}
+
+/* Dark mode colors - activated when 'dark' class is present */
+.dark {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 15, 23, 42;
+  --background-end-rgb: 15, 23, 42;
 }
 
 body {

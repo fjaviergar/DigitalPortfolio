@@ -10,7 +10,7 @@ export default function Gallery({ items, onItemClick }: GalleryProps) {
   if (items.length === 0) {
     return (
       <div className="text-center py-12">
-        <p className="text-gray-500 text-lg">
+        <p className="text-gray-500 dark:text-gray-400 text-lg">
           No artwork found. Try adjusting your search or filters.
         </p>
       </div>
