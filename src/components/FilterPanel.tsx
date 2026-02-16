@@ -42,7 +42,7 @@ export default function FilterPanel({
       {/* Categories Section */}
       <div>
         <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-3">
-          Categories
+          Categorías
         </h3>
         <div className="space-y-2">
           {categories.map((category) => {
@@ -67,7 +67,7 @@ export default function FilterPanel({
 
       {/* Tags Section */}
       <div>
-        <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-3">Tags</h3>
+        <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-3">Etiquetas</h3>
         <div className="flex flex-wrap gap-2">
           {displayedTags.map((tag) => {
             const isSelected = selectedTags.includes(tag)

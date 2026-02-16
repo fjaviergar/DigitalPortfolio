@@ -25,10 +25,10 @@ export default function Layout({ children }: LayoutProps) {
           <div className="flex items-start justify-between">
             <div>
               <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
-                Digital Portfolio
+                Javier Garcia
               </h1>
               <p className="mt-1 text-sm text-gray-600 dark:text-gray-300">
-                A collection of drawings and artwork
+                Festival del humor de la libreta a la web
               </p>
             </div>
             {/* Theme toggle button in upper right */}
