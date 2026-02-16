@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect } from 'react'
 import Head from 'next/head'
 import { GetStaticProps } from 'next'
 import Layout from '@/components/Layout'
@@ -22,6 +22,7 @@ export default function Home({ portfolioItems }: HomeProps) {
   const [selectedTags, setSelectedTags] = useState<string[]>([])
   const [lightboxOpen, setLightboxOpen] = useState(false)
   const [lightboxIndex, setLightboxIndex] = useState(0)
+  const [itemsToShow, setItemsToShow] = useState(8) // Pagination: show 8 initially
 
   // Get unique categories and tags
   const categories = useMemo(
@@ -44,6 +45,24 @@ export default function Home({ portfolioItems }: HomeProps) {
 
     return items
   }, [portfolioItems, selectedCategories, selectedTags, searchQuery])
+
+  // Reset pagination when filters or search changes
+  useEffect(() => {
+    setItemsToShow(8)
+  }, [selectedCategories, selectedTags, searchQuery])
+
+  // Get paginated items to display
+  const displayedItems = useMemo(() => {
+    return filteredItems.slice(0, itemsToShow)
+  }, [filteredItems, itemsToShow])
+
+  // Check if there are more items to load
+  const hasMoreItems = filteredItems.length > itemsToShow
+
+  // Handle load more
+  const handleLoadMore = () => {
+    setItemsToShow((prev) => prev + 8)
+  }
 
   // Handle category filter toggle
   const handleCategoryToggle = (category: string) => {
@@ -113,11 +132,23 @@ export default function Home({ portfolioItems }: HomeProps) {
             <div className="flex-1">
               {/* Results count */}
               <div className="mb-4 text-sm text-gray-600 dark:text-gray-400">
-                Showing {filteredItems.length} of {portfolioItems.length}{' '}
+                Showing {displayedItems.length} of {filteredItems.length}{' '}
                 {filteredItems.length === 1 ? 'artwork' : 'artworks'}
               </div>
 
-              <Gallery items={filteredItems} onItemClick={handleItemClick} />
+              <Gallery items={displayedItems} onItemClick={handleItemClick} />
+
+              {/* Load More Button */}
+              {hasMoreItems && (
+                <div className="mt-8 flex justify-center">
+                  <button
+                    onClick={handleLoadMore}
+                    className="px-6 py-3 bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white rounded-lg font-medium transition-colors shadow-sm hover:shadow-md"
+                  >
+                    Cargar más
+                  </button>
+                </div>
+              )}
             </div>
           </div>
         </div>
