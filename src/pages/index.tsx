@@ -77,10 +77,10 @@ export default function Home({ portfolioItems }: HomeProps) {
   return (
     <>
       <Head>
-        <title>Digital Portfolio</title>
+        <title>Javier Garcia</title>
         <meta
           name="description"
-          content="Personal digital portfolio showcasing drawings and pictures"
+          content="Festival del humor de la libreta a la web"
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />

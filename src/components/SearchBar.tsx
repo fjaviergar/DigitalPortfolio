@@ -7,7 +7,7 @@ interface SearchBarProps {
 export default function SearchBar({
   value,
   onChange,
-  placeholder = 'Search artwork by title, description, or tags...',
+  placeholder = 'Busca entradas por título, descripción, o etiquetas...',
 }: SearchBarProps) {
   return (
     <div className="relative">

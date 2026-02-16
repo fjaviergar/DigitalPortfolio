@@ -105,7 +105,7 @@ export default function FilterPanel({
           Aviso Importante
         </h3>
         <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-          Mi nombre es Javier Garcia y a veces se me ocurren chorradas. Hasta el momento vivían en una libreta pero ahora, gracias a la IA, las puedo compartir conmigo mismo en esta web. Si has llegado hasta aquí y por algún extraño motivo quieres contactarme, piénsatelo dos veces.
+          Mi nombre es Javier Garcia y a veces se me ocurren estas chorradas. Hasta el momento vivían en una libreta pero ahora, gracias a la IA, las puedo compartir conmigo mismo en esta web. Si has llegado hasta aquí y por algún extraño motivo quieres contactarme puedes hacerlo a través de los siguientes links.
         </p>
 
         {/* Contact Links */}
