@@ -64,5 +64,61 @@
     "date": "2026-02-15",
     "width": 1200,
     "height": 800
+  },
+  {
+    "id": "Fusible-Asalto",
+    "title": "Fusible de Asalto",
+    "description": "Salta más que John Rambo enfadado",
+    "imagePath": "/images/Fusible de Asalto.jpeg",
+    "category": "Viñetas",
+    "tags": ["Español", "caricatura","retrato"],
+    "date": "2026-02-15",
+    "width": 1200,
+    "height": 800
+  },
+  ,
+  {
+    "id": "Heridos-citricos",
+    "title": "Heridos cítricos",
+    "description": "Los fruitis también pueden morir",
+    "imagePath": "/images/Heridos citricos.jpeg",
+    "category": "Viñetas",
+    "tags": ["Español", "caricatura","situación"],
+    "date": "2026-02-15",
+    "width": 1200,
+    "height": 800
+  },
+  {
+    "id": "Richard-Nixen",
+    "title": "Richard Nixen",
+    "description": "Mitad sirena, mitad presidente",
+    "imagePath": "/images/Richard Nixen.jpeg",
+    "category": "Viñetas",
+    "tags": ["Deutsch", "caricatura","retrato"],
+    "date": "2026-02-15",
+    "width": 1200,
+    "height": 800
+  },
+  {
+    "id": "Trompos-Falopio",
+    "title": "Trompos de Falopio",
+    "description": "2Fast, 2Furious",
+    "imagePath": "/images/Trompos de Falopio.JPEG",
+    "category": "Viñetas",
+    "tags": ["Español", "caricatura","situación"],
+    "date": "2026-02-15",
+    "width": 1200,
+    "height": 800
+  },
+  {
+    "id": "Propositos-2026",
+    "title": "Propósitos de 2026",
+    "description": "Cuando a la vida le importan una mierda tus propósitos",
+    "imagePath": "/images/Propositos 2026.jpg",
+    "category": "Viñetas",
+    "tags": ["Español", "caricatura","situación","AI"],
+    "date": "2026-02-15",
+    "width": 1200,
+    "height": 800
   }
 ]
