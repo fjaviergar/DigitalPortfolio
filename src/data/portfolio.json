@@ -99,17 +99,6 @@
     "height": 800
   },
   {
-    "id": "Trompos-Falopio",
-    "title": "Trompos de Falopio",
-    "description": "2Fast, 2Furious",
-    "imagePath": "/images/Trompos de Falopio.JPEG",
-    "category": "Viñetas",
-    "tags": ["Español", "caricatura","situación"],
-    "date": "2026-02-15",
-    "width": 1200,
-    "height": 800
-  },
-  {
     "id": "Propositos-2026",
     "title": "Propósitos de 2026",
     "description": "Cuando a la vida le importan una mierda tus propósitos",
