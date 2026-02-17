@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# TODO: Replace with your actual Vercel URL
+Sitemap: https://digital-portfolio-two-orcin.vercel.app/sitemap.xml

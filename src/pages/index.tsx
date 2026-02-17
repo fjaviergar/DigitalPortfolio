@@ -12,6 +12,13 @@ import { searchArtwork } from '@/utils/searchArtwork'
 import { filterArtwork, getUniqueCategories, getUniqueTags } from '@/utils/filterArtwork'
 import portfolioData from '@/data/portfolio.json'
 
+// TODO: Replace with your actual Vercel URL before deploying
+const SITE_URL = 'https://digital-portfolio-two-orcin.vercel.app'
+const SITE_TITLE = 'Javier Garcia - Portfolio'
+const SITE_DESCRIPTION = 'Festival del humor de la libreta a la web. Portfolio de viñetas y caricaturas de Javier Garcia.'
+// TODO: Replace with your actual OG banner image path
+const OG_IMAGE = '/images/og-banner.jpg'
+
 interface HomeProps {
   portfolioItems: PortfolioItem[]
 }
@@ -94,16 +101,61 @@ export default function Home({ portfolioItems }: HomeProps) {
     setLightboxOpen(true)
   }
 
+  // JSON-LD structured data
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: SITE_TITLE,
+    url: SITE_URL,
+    description: SITE_DESCRIPTION,
+    author: {
+      '@type': 'Person',
+      name: 'Javier Garcia',
+    },
+    mainEntity: {
+      '@type': 'ImageGallery',
+      name: SITE_TITLE,
+      description: SITE_DESCRIPTION,
+      image: portfolioItems.map((item) => ({
+        '@type': 'ImageObject',
+        name: item.title,
+        description: item.description,
+        contentUrl: `${SITE_URL}${item.imagePath}`,
+        width: item.width,
+        height: item.height,
+        datePublished: item.date,
+      })),
+    },
+  }
+
   return (
     <>
       <Head>
-        <title>Javier Garcia</title>
-        <meta
-          name="description"
-          content="Festival del humor de la libreta a la web"
-        />
+        <title>{SITE_TITLE}</title>
+        <meta name="description" content={SITE_DESCRIPTION} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
+        <link rel="canonical" href={SITE_URL} />
+
+        {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={SITE_URL} />
+        <meta property="og:title" content={SITE_TITLE} />
+        <meta property="og:description" content={SITE_DESCRIPTION} />
+        <meta property="og:image" content={`${SITE_URL}${OG_IMAGE}`} />
+        <meta property="og:locale" content="es_ES" />
+
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={SITE_TITLE} />
+        <meta name="twitter:description" content={SITE_DESCRIPTION} />
+        <meta name="twitter:image" content={`${SITE_URL}${OG_IMAGE}`} />
+
+        {/* JSON-LD Structured Data */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
       </Head>
 
       <Layout>
