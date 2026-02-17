@@ -1,5 +1,6 @@
 import Lightbox from 'yet-another-react-lightbox'
 import Captions from 'yet-another-react-lightbox/plugins/captions'
+import Zoom from 'yet-another-react-lightbox/plugins/zoom'
 import 'yet-another-react-lightbox/styles.css'
 import 'yet-another-react-lightbox/plugins/captions.css'
 import { PortfolioItem } from '@/types/portfolio'
@@ -55,9 +56,14 @@ export default function PortfolioLightbox({
       close={onClose}
       index={currentIndex}
       slides={slides}
-      plugins={[Captions]}
+      plugins={[Captions, Zoom]}
       captions={{
         descriptionTextAlign: 'start',
+      }}
+      zoom={{
+        maxZoomPixelRatio: 3,
+        scrollToZoom: true,
+        zoomInMultiplier: 2,
       }}
       carousel={{
         finite: true,
