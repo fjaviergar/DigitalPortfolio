@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import { PortfolioItem } from '@/types/portfolio'
+import { motion } from 'framer-motion'
 import clsx from 'clsx'
 
 interface PortfolioCardProps {
@@ -9,12 +10,15 @@ interface PortfolioCardProps {
 
 export default function PortfolioCard({ item, onClick }: PortfolioCardProps) {
   return (
-    <div
+    <motion.div
       onClick={onClick}
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.98 }}
+      transition={{ type: 'spring', stiffness: 300, damping: 20 }}
       className={clsx(
         'group relative overflow-hidden rounded-lg cursor-pointer',
-        'bg-gray-100 dark:bg-gray-800 transition-all duration-300',
-        'hover:shadow-xl hover:scale-105'
+        'bg-gray-100 dark:bg-gray-800 transition-shadow duration-300',
+        'hover:shadow-xl'
       )}
     >
       {/* Image */}
@@ -62,6 +66,6 @@ export default function PortfolioCard({ item, onClick }: PortfolioCardProps) {
           )}
         </div>
       </div>
-    </div>
+    </motion.div>
   )
 }

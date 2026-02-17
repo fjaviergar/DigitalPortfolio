@@ -1,6 +1,7 @@
 import { useState, useMemo, useEffect } from 'react'
 import Head from 'next/head'
 import { GetStaticProps } from 'next'
+import { motion, AnimatePresence } from 'framer-motion'
 import Layout from '@/components/Layout'
 import Gallery from '@/components/Gallery'
 import PortfolioLightbox from '@/components/PortfolioLightbox'
@@ -139,16 +140,24 @@ export default function Home({ portfolioItems }: HomeProps) {
               <Gallery items={displayedItems} onItemClick={handleItemClick} />
 
               {/* Load More Button */}
-              {hasMoreItems && (
-                <div className="mt-8 flex justify-center">
-                  <button
-                    onClick={handleLoadMore}
-                    className="px-6 py-3 bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white rounded-lg font-medium transition-colors shadow-sm hover:shadow-md"
+              <AnimatePresence>
+                {hasMoreItems && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 10 }}
+                    transition={{ duration: 0.3 }}
+                    className="mt-8 flex justify-center"
                   >
-                    Cargar más
-                  </button>
-                </div>
-              )}
+                    <button
+                      onClick={handleLoadMore}
+                      className="px-6 py-3 bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white rounded-lg font-medium transition-colors shadow-sm hover:shadow-md"
+                    >
+                      Cargar más
+                    </button>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
           </div>
         </div>
