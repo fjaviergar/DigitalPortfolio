@@ -22,7 +22,7 @@ export default function PortfolioCard({ item, onClick }: PortfolioCardProps) {
       )}
     >
       {/* Image */}
-      <div className="aspect-square relative">
+      <div className="aspect-[3/2] relative">
         <Image
           src={item.imagePath}
           alt={item.title}
@@ -31,8 +31,8 @@ export default function PortfolioCard({ item, onClick }: PortfolioCardProps) {
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
         />
 
-        {/* Overlay on hover */}
-        <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition-all duration-300" />
+        {/* Overlay: subtle on mobile, hover-only on desktop */}
+        <div className="absolute inset-0 bg-black bg-opacity-20 md:bg-opacity-0 md:group-hover:bg-opacity-40 transition-all duration-300" />
       </div>
 
       {/* Content */}
