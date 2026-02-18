@@ -36,3 +36,10 @@ body {
   overflow: visible !important;
   max-height: none !important;
 }
+
+/* Mobile: reserve space at bottom for caption */
+@media (max-width: 768px) {
+  .yarl__slide {
+    padding-bottom: 160px !important;
+  }
+}
