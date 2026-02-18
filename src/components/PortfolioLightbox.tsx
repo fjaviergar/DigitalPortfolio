@@ -63,8 +63,7 @@ export default function PortfolioLightbox({
               }}
             >
               <div
-                className="bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm p-3 sm:p-4 rounded-lg max-h-[40vh] overflow-y-auto"
-                style={{ pointerEvents: 'auto' }}
+                className="bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm p-3 sm:p-4 rounded-lg max-h-[40vh] overflow-hidden"
               >
                 {/* Header row: Title and Counter */}
                 <div className="flex items-start justify-between mb-1 sm:mb-2">
