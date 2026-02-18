@@ -25,32 +25,3 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
-
-/* Lightbox: place captions below image instead of overlaying */
-.yarl__slide {
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: center !important;
-}
-
-.yarl__slide_captions_container {
-  position: relative !important;
-  max-height: none !important;
-  overflow: visible !important;
-  flex-shrink: 0 !important;
-}
-
-.yarl__slide_description_container {
-  position: relative !important;
-  bottom: auto !important;
-}
-
-.yarl__slide_description {
-  overflow: visible !important;
-  max-height: none !important;
-}
-
-.yarl__slide_image {
-  flex-shrink: 1 !important;
-  min-height: 0 !important;
-}
