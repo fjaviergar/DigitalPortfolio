@@ -25,3 +25,14 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+/* Lightbox captions: ensure visibility on mobile */
+.yarl__slide_captions_container {
+  max-height: none !important;
+  overflow: visible !important;
+}
+
+.yarl__slide_description {
+  overflow: visible !important;
+  max-height: none !important;
+}
