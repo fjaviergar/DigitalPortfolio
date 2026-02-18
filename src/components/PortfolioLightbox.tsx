@@ -53,8 +53,8 @@ export default function PortfolioLightbox({
       />
 
       {isOpen && activeItem && (
-        <div className="fixed bottom-0 left-0 right-0 z-[10000] p-2 sm:p-4">
-          <div className="bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm p-3 sm:p-4 rounded-lg max-h-[40vh] overflow-y-auto">
+        <div className="fixed bottom-0 left-0 right-0 z-[10000] p-2 sm:p-4 pointer-events-none">
+          <div className="bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm p-3 sm:p-4 rounded-lg max-h-[40vh] overflow-y-auto pointer-events-auto">
             {/* Header row: Title and Counter */}
             <div className="flex items-start justify-between mb-1 sm:mb-2">
               <h3 className="text-base sm:text-lg font-bold text-gray-900 dark:text-white flex-1">
