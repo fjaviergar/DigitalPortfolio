@@ -37,9 +37,13 @@ body {
   max-height: none !important;
 }
 
-/* Mobile: reserve space at bottom for caption */
+/* Mobile: reserve space at bottom for caption and move caption up */
 @media (max-width: 768px) {
   .yarl__slide {
     padding-bottom: 160px !important;
+  }
+
+  .yarl__slide_description_container {
+    bottom: 160px !important;
   }
 }
