@@ -1,4 +1,5 @@
 import { ReactNode } from 'react'
+import Image from 'next/image'
 import dynamic from 'next/dynamic'
 
 // Import ThemeToggle with SSR disabled to avoid context errors during server-side rendering
@@ -23,13 +24,23 @@ export default function Layout({ children }: LayoutProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           {/* Flex container for title and toggle button */}
           <div className="flex items-start justify-between">
-            <div>
-              <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
-                Javier Garcia
-              </h1>
-              <p className="mt-1 text-sm text-gray-600 dark:text-gray-300">
-                Festival del humor de la libreta a la web
-              </p>
+            {/* Logo + Title group */}
+            <div className="flex items-center gap-3">
+              <Image
+                src="/images/og-banner.jpg"
+                alt="Javier Garcia logo"
+                width={48}
+                height={48}
+                className="rounded-full object-cover w-12 h-12 flex-shrink-0"
+              />
+              <div>
+                <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
+                  Javier Garcia
+                </h1>
+                <p className="mt-1 text-sm text-gray-600 dark:text-gray-300">
+                  Festival del humor de la libreta a la web
+                </p>
+              </div>
             </div>
             {/* Theme toggle button in upper right */}
             <ThemeToggle />
