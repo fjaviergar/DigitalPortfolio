@@ -36,15 +36,3 @@ body {
   overflow: visible !important;
   max-height: none !important;
 }
-
-/* Mobile: constrain image height so captions get more space */
-@media (max-width: 768px) {
-  .yarl__slide_image {
-    max-height: 50vh !important;
-  }
-
-  .yarl__slide {
-    padding-top: 40px !important;
-    padding-bottom: 0 !important;
-  }
-}
