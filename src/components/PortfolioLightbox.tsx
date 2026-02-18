@@ -35,11 +35,19 @@ export default function PortfolioLightbox({
           </span>
         </div>
 
-        {/* Category badge */}
-        <div className="mb-1 sm:mb-2">
+        {/* Category and tags */}
+        <div className="flex items-center gap-1 flex-wrap mb-1 sm:mb-2">
           <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200">
             {item.category}
           </span>
+          {item.tags.map((tag) => (
+            <span
+              key={tag}
+              className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300"
+            >
+              {tag}
+            </span>
+          ))}
         </div>
 
         {/* Description */}

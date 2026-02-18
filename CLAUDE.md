@@ -17,7 +17,7 @@ A personal digital portfolio web application for showcasing drawings and picture
 ### Core Features
 - ✅ **Image Gallery:** Display artwork in a responsive grid layout
 - ✅ **Categories/Tags:** Organize artwork by categories and tags
-- ✅ **Image Lightbox:** Full-screen image viewer with navigation
+- ✅ **Image Lightbox:** Full-screen image viewer with navigation, zoom, and category/tag display
 - ✅ **Search Functionality:** Real-time search across titles, descriptions, and tags
 - ✅ **Filter System:** Filter artwork by categories and tags
 - ✅ **Dark Mode:** Toggle between light and dark themes with persistent preference
